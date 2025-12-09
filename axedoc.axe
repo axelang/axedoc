@@ -48,7 +48,7 @@ def has_suffix_local(value: string, suffix: string): bool {
         if value.data[start + i] != suffix.data[i] {
             return false;
         }
-        i = i + 1;
+        i++;
     }
 
     return true;
