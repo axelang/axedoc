@@ -95,10 +95,10 @@ def generate_docs_for_file(path: string): bool {
         mut line: string;
 
         if nl_index == -1 {
-            line = substr(source, pos, source.len - pos);
+            line = substr(source, cast[i32](pos), source.len - pos);
             pos = source.len;
         } else {
-            line = substr(source, pos, cast[usize](nl_index - pos));
+            line = substr(source, cast[i32](pos), cast[usize](nl_index - pos));
             pos = cast[usize](nl_index) + 1;
         }
 
@@ -124,7 +124,7 @@ def generate_docs_for_file(path: string): bool {
                 }
             }
 
-            val doc_line: string = substr(trimmed, content_start, trimmed.len - content_start);
+            val doc_line: string = substr(trimmed, cast[i32](content_start), trimmed.len - content_start);
 
             if current_doc.len == 0 {
                 current_doc = doc_line;
@@ -170,7 +170,7 @@ def generate_docs_for_file(path: string): bool {
             if is_model_sig and trimmed.len > 6 {
                 signature_text = substr(trimmed, 6, trimmed.len - 6);
             } elif is_def_sig and trimmed.len > offset {
-                signature_text = substr(trimmed, offset, trimmed.len - offset);
+                signature_text = substr(trimmed, cast[i32](offset), trimmed.len - offset);
             }
 
             signature_text = strip(signature_text);
